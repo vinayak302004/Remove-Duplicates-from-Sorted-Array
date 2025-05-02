@@ -1,0 +1,33 @@
+# C++
+
+1. Brute-Force Approach :
+
+class Solution {
+public:
+    int removeDuplicates(std::vector<int>& nums) {
+        int k = 1, n = nums.size();
+        for (int i = 1; i < n; ++i) {
+            if (nums[i - 1] != nums[i]) {
+                nums[k] = nums[i];
+                ++k;
+            }
+        }
+        return k;
+    }
+};
+
+2. Optimal Approach :
+
+class Solution {
+public:
+    int removeDuplicates(std::vector<int>& nums) {
+        std::unordered_set<int> set;
+        int k = 0;
+        for (int num : nums) {
+            if (set.insert(num).second) { 
+                nums[k++] = num;
+            }
+        }
+        return k;
+    }
+};
