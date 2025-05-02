@@ -1,0 +1,39 @@
+# Java
+
+1. Brute-Force Approach :
+
+class Solution 
+{
+    public int removeDuplicates(int[] nums) 
+    {
+        int i,k=1,n=nums.length;
+        for(i=1;i<n;i++)
+        {
+            if(nums[i-1]!=nums[i])
+            {
+                nums[k]=nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
+}
+
+2. Optimal Approach :
+
+class Solution 
+{
+    public int removeDuplicates(int[] nums) 
+    {
+       HashSet<Integer> set=new HashSet<>();
+       int k=0;
+       for(int num:nums)
+       {
+            if(set.add(num))
+            {
+                nums[k++]=num;
+            }
+       }
+       return k;
+    }
+}
